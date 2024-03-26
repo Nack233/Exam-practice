@@ -10,25 +10,33 @@
         <thead>
             <tr>
                 <td width="35px">#</td>
-                <td>name</td>
-                <td>email</td>
-                <td>avatar</td>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Avatar</td>
                 <td>Title</td>
                 <td width="150px">Tools</td>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>name</td>
-                <td>email</td>
-                <td>avatar</td>
-                <td>Title</td>
-                <td>
-                    <a href="{{ url('/edit-user') }}" class="btn btn-warning">Edit</a>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
+            @foreach ($users as $user)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>
+                        <img src="{{ asset('storage/' . $user->avatar) }}" alt="{{ $user->name }}" width="50">
+                    </td>
+                    <td>{{ $user->title->tit_name }}</td>
+                    <td>
+                        <a href="{{ url('/edit-user/' . $user->id) }}" class="btn btn-warning">Edit</a>
+                        <form action="{{ url('/delete-user/' . $user->id) }}" method="POST" style="display: inline-block;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 @endsection

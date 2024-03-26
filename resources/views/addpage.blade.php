@@ -8,7 +8,7 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form class="form-horizontal" action="{{ url('/') }}" method="post">
+        <form class="form-horizontal" action="{{ route('add.user') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
                 <div class="form-group row">
