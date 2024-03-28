@@ -10,10 +10,10 @@
         <thead>
             <tr>
                 <td width="35px">#</td>
+                <td>Title</td>
                 <td>Name</td>
                 <td>Email</td>
                 <td>Avatar</td>
-                <td>Title</td>
                 <td width="150px">Tools</td>
             </tr>
         </thead>
@@ -21,12 +21,12 @@
             @foreach ($users as $user)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
+                    <td>{{ $user->title->tit_name }}</td>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>
                         <img src="{{ asset('storage/' . $user->avatar) }}" alt="{{ $user->name }}" width="50">
                     </td>
-                    <td>{{ $user->title->tit_name }}</td>
                     <td>
                         <a href="{{ url('/edit-user/' . $user->id) }}" class="btn btn-warning">Edit</a>
                         <form action="{{ url('/delete-user/' . $user->id) }}" method="POST" style="display: inline-block;">
