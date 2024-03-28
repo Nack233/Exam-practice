@@ -72,5 +72,8 @@ public function deleteUser($id)
     $user->delete();
     return redirect()->route('home')->with('success', 'User deleted successfully');
 }
+public function editUser(){
+
+}
 // ...
 }
