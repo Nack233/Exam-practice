@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 // ...
 
+Route::delete('/delete-user/{id}', [App\Http\Controllers\HomeController::class, 'deleteUser'])->name('delete.user');
+
+// ...
+
 Route::get('/add-user', [App\Http\Controllers\HomeController::class, 'showAddPage']);
 Route::post('/add-user', [App\Http\Controllers\HomeController::class, 'addUser'])->name('add.user');
 

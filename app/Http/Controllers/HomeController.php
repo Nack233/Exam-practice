@@ -63,5 +63,14 @@ public function showAddPage()
     return view('addpage', compact('titles')); // Pass $titles to the view
 }
 
+public function deleteUser($id)
+{
+    $user = User::find($id);
+    if (!$user) {
+        return redirect()->route('home')->with('error', 'User not found');
+    }
+    $user->delete();
+    return redirect()->route('home')->with('success', 'User deleted successfully');
+}
 // ...
 }

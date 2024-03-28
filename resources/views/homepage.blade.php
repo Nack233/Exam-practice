@@ -29,7 +29,7 @@
                     </td>
                     <td>
                         <a href="{{ url('/edit-user/' . $user->id) }}" class="btn btn-warning">Edit</a>
-                        <form action="{{ url('/delete-user/' . $user->id) }}" method="POST" style="display: inline-block;">
+                        <form action="{{ route('delete.user', ['id' => $user->id]) }}" method="POST" style="display: inline-block;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
