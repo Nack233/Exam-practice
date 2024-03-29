@@ -15,6 +15,7 @@
                     <label for="title_id" class="col-sm-2 col-form-label">Title</label>
                     <div class="col-sm-10">
                         <select class="form-control" id="title_id" name="title_id">
+                            <option selected hidden>Titles</option>
                             @foreach ($titles as $title)
                                 <option value="{{ $title->id }}">{{ $title->tit_name }}</option>
                             @endforeach

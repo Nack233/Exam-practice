@@ -5,7 +5,7 @@ use App\Http\Controllers\HomeController;
 // ...
 
 Route::get('/edit-user/{id}', [HomeController::class, 'editUser'])->name('edit.user');
-Route::post('/update-user/{id}', [HomeController::class, 'updateUser'])->name('update.user');
+Route::put('/update-user/{id}', [HomeController::class, 'updateUser'])->name('update.user');
 
 
 // ...

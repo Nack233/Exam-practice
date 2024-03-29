@@ -114,10 +114,11 @@ public function updateUser(Request $request, $id)
     } else {
         unset($validatedData['password']);
     }
-
-    $user->update($validatedData);
-
-    return redirect()->route('home')->with('success', 'User updated successfully!');
+    if ($request->isMethod('PUT')) {
+        // Handle the PUT request
+        $user->update($validatedData);
+        return redirect()->route('home')->with('success', 'User updated successfully!');
 }
 // ...
+}
 }
