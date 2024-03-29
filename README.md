@@ -3,7 +3,7 @@
 
 ## FINAL EXAM Software Development Training Camp
 
-### รายการงานที่ต้องทำ all function useable 
+### รายการงานที่ต้องทำ all function usable 
 
 - [check] เชื่อมต่อ Database
 - [check] สร้าง Controller สำหรับ users ชื่อไฟล์ UserController
