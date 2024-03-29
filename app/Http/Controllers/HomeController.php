@@ -34,7 +34,7 @@ public function addUser(Request $request)
     $validatedData = $request->validate([
         'name' => 'required|max:255',
         'email' => 'required|email|unique:users',
-        'password' => 'required|min:8',
+        'password' => 'required|min:5',
         'avatar' => 'nullable|image|max:2048',
         'title_id' => 'required|exists:titles,id',
     ]);

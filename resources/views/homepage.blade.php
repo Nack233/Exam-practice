@@ -25,7 +25,7 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>
-                        <img src="{{ asset('storage/avatars/' . $user->avatar) }}" alt="{{ $user->name }}" width="50">
+                        <img src="{{ asset('storage/avatars/' . $user->avatar) }}" width="100">
                     </td>
                     <td>
                         <a href="{{ route('edit.user', $user->id) }}" class="btn btn-warning">Edit</a>
