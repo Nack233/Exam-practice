@@ -65,15 +65,59 @@ public function showAddPage()
 
 public function deleteUser($id)
 {
-    $user = User::find($id);
-    if (!$user) {
-        return redirect()->route('home')->with('error', 'User not found');
-    }
+    $user = User::findOrFail($id);
     $user->delete();
-    return redirect()->route('home')->with('success', 'User deleted successfully');
-}
-public function editUser(){
 
+    return response()->json(['message' => 'User deleted successfully']);
+}
+/**
+ * Show the edit form for the specified user.
+ *
+ * @param  int  $id
+ * @return \Illuminate\View\View
+ */
+public function editUser($id)
+{
+    $user = User::findOrFail($id);
+    $titles = Title::all();
+
+    return view('editpage', compact('user', 'titles'));
+}
+
+/**
+ * Update the specified user in the database.
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @param  int  $id
+ * @return \Illuminate\Http\RedirectResponse
+ */
+public function updateUser(Request $request, $id)
+{
+    $validatedData = $request->validate([
+        'name' => 'required|max:255',
+        'email' => 'required|email|unique:users,email,' . $id,
+        'password' => 'nullable|min:8',
+        'avatar' => 'nullable|image|max:2048',
+        'title_id' => 'required|exists:titles,id',
+    ]);
+
+    $user = User::findOrFail($id);
+
+    if ($request->hasFile('avatar')) {
+        $avatar = $request->file('avatar');
+        $avatarPath = $avatar->store('public/avatars');
+        $validatedData['avatar'] = basename($avatarPath);
+    }
+
+    if ($request->filled('password')) {
+        $validatedData['password'] = bcrypt($validatedData['password']);
+    } else {
+        unset($validatedData['password']);
+    }
+
+    $user->update($validatedData);
+
+    return redirect()->route('home')->with('success', 'User updated successfully!');
 }
 // ...
 }

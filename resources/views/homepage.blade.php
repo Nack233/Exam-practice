@@ -28,15 +28,57 @@
                         <img src="{{ asset('storage/avatars/' . $user->avatar) }}" alt="{{ $user->name }}" width="50">
                     </td>
                     <td>
-                        <a href="{{ url('/edit-user/' . $user->id) }}" class="btn btn-warning">Edit</a>
+                        <a href="{{ route('edit.user', $user->id) }}" class="btn btn-warning">Edit</a>
                         <form action="{{ route('delete.user', ['id' => $user->id]) }}" method="POST" style="display: inline-block;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $user->id }})">Delete</button>
                         </form>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    <script>
+        function confirmDelete(userId) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Send AJAX request to delete the user
+                    $.ajax({
+                        url: '/delete-user/' + userId,
+                        type: 'DELETE',
+                        data: {
+                            _token: '{{ csrf_token() }}'
+                        },
+                        success: function(response) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: response.message,
+                                icon: "success"
+                            });
+                            // Optionally, you can remove the deleted row from the table
+                            $('#row_' + userId).remove();
+
+                            location.reload();
+                        },
+                        error: function(xhr) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'An error occurred',
+                                text: xhr.responseText
+                            });
+                        }
+                    });
+                }
+            });
+        }
+    </script>
 @endsection

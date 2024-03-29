@@ -4,6 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 // ...
 
+Route::get('/edit-user/{id}', [HomeController::class, 'editUser'])->name('edit.user');
+Route::post('/update-user/{id}', [HomeController::class, 'updateUser'])->name('update.user');
+
+
+// ...
+
 Route::delete('/delete-user/{id}', [App\Http\Controllers\HomeController::class, 'deleteUser'])->name('delete.user');
 
 // ...
