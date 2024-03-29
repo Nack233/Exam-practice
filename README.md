@@ -3,13 +3,13 @@
 
 ## FINAL EXAM Software Development Training Camp
 
-### รายการงานที่ต้องทำ
+### รายการงานที่ต้องทำ all function useable 
 
-- [ ] เชื่อมต่อ Database
-- [ ] สร้าง Controller สำหรับ users ชื่อไฟล์ UserController
-- [ ] สร้าง Route สำหรับ CRUD users
-- [ ] ปรับแก้หน้า homepage ให้แสดงข้อมูล users
-- [ ] ปรับแก้หน้า addpage ให้เพิ่มข้อมูลได้ (ถ้าทำ upload file ได้มีคะแนนพิเศษ)
-- [ ] ปรับแก้หน้า editpage ให้สามารถแสดงข้อมูลเดิมได้
-- [ ] ปรับแก้หน้า editpage ให้สามารถปรับแก้ข้อมูลได้
-- [ ] ปรับแก้หน้า homepage ให้สามารถลบข้อมูลได้
+- [check] เชื่อมต่อ Database
+- [check] สร้าง Controller สำหรับ users ชื่อไฟล์ UserController
+- [check] สร้าง Route สำหรับ CRUD users
+- [check] ปรับแก้หน้า homepage ให้แสดงข้อมูล users
+- [check] ปรับแก้หน้า addpage ให้เพิ่มข้อมูลได้ (ถ้าทำ upload file ได้มีคะแนนพิเศษ)
+- [check] ปรับแก้หน้า editpage ให้สามารถแสดงข้อมูลเดิมได้
+- [check] ปรับแก้หน้า editpage ให้สามารถปรับแก้ข้อมูลได้
+- [check] ปรับแก้หน้า homepage ให้สามารถลบข้อมูลได้
